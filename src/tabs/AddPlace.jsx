@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const AddPlace = () => {
-  const [data, setdata] = useState({});
+  const [data, setdata] = useState({photo : "" , name : "" , link : ""});
 
   function writeInput(e) {
     setdata({ ...data, [e.target.name]: e.target.value });
@@ -37,12 +37,12 @@ const AddPlace = () => {
         <h4>Add Place</h4>
         <div>
           <label htmlFor="photo">
-            <img src="" alt="" />
+            <img src={data.photo} alt="" />
           </label>
           <input
             type="file"
             className="file-input"
-            name="AddPlace-photo"
+            name="photo"
             onInput={(e) => writeInputFile(e)}
             id="photo"
           />
@@ -57,8 +57,8 @@ const AddPlace = () => {
           <br />
           <div className="instruction">
             <ol>
-              <h5>Instructions to add goggle map</h5>
-              <li>Go to google map and locate place you wanted to add</li>
+              <h5>Instructions to add google map</h5>
+              <li>Go to <a href="https://map.google.com" target="_blank" >google map</a>  and locate place you wanted to add</li>
               <li>Click on share button given </li>
               <li>
                 <img src="/img/share.png" alt="share place" />
@@ -79,7 +79,7 @@ const AddPlace = () => {
                 value={data.link}
               />
               <span className="closebutton" onClick={() => modal()}>
-                close
+                &times;
               </span>
             </ol>
           </div>
@@ -92,11 +92,11 @@ const AddPlace = () => {
             value={data.link}
           />
           <br />
-          <button class="button">Add this place</button>
+          <button class="button" >Add this place</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddPlace;
+export default React.memo(AddPlace);

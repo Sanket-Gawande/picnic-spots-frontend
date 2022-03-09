@@ -1,6 +1,7 @@
 import React from 'react'
-import Card from './partials/Card'
-const Places = () => {
+import Card from '../partials/Card'
+import { useParams } from 'react-router-dom'
+const User_places = () => {
     const cards = [
         {
             name:'Pimpalgaon reserviour wadad',
@@ -43,10 +44,12 @@ const Places = () => {
 
         }
     ]
-    return (
 
+    const params = useParams();
+
+    return (
         <section className='card-section'>
-                <h4 className='card-section_heading'>All places</h4>
+                <h4 className='card-section_heading'>Showing places for user id {params.userid}</h4>
                 <div className='div-flex'>
 
                 {
@@ -61,4 +64,4 @@ const Places = () => {
     )
 }
 
-export default Places
+export default User_places

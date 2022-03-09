@@ -17,6 +17,7 @@ map</button>
     </div>
     <div class="place-card__map" id={data.id}>
       <span onClick={() => hide(data.id)}>&times;</span>
+      {/* eslint-disable-next-line*/}
       <iframe tittle={data.name} className="place-card__map_iframe" src="" frameborder="1"></iframe>
     </div>
   </div>

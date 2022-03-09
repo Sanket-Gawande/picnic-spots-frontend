@@ -1,13 +1,31 @@
 import { useState } from "react";
-
+import { useAuth } from "../auth/auth";
 const Password = () => {
-  const [data, setdata] = useState({});
+  // calling use auth hook to get user details
+  const auth = useAuth()
+  const [data, setdata] = useState({
+    oldpassword : "", 
+    newpassword : "",
+    c_password : ""
+  });
 
   function writeInput(e) {
     setdata({ ...data, [e.target.name]: e.target.value });
   }
-  function submit(e) {
+ async  function submit(e) {
     e.preventDefault();
+    const userIn = auth.user().userIn
+    const payload = JSON.stringify({userIn , data})
+    const request = await fetch("/api/password/change" , {
+      method : "post" ,
+      body : payload,
+      headers : {
+        "Content-type" : "application/json"
+      }
+    })
+    const response = await request.json();
+    console.log(response)
+
   }
   return (
     <div className="center-div">
@@ -20,7 +38,7 @@ const Password = () => {
             placeholder="Old password"
             name="oldpassword"
             onInput={(e) => writeInput(e)}
-            value={data.password}
+            value={data.oldpassword}
           />
           <br />
           <input
@@ -29,7 +47,7 @@ const Password = () => {
             placeholder=" New Password"
             name="newpassword"
             onInput={(e) => writeInput(e)}
-            value={data.password}
+            value={data.newpassword}
           />
           <br />
           <input

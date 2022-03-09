@@ -1,6 +1,6 @@
 import React from 'react'
-import './styles/users.scss'
-import UserCard from './partials/UserCard'
+import '../styles/users.scss'
+import UserCard from '../partials/UserCard'
 
 const Users = () => {
     return (

@@ -1,7 +1,6 @@
 import React from 'react'
-import './styles/home.scss'
-import Card from './partials/Card'
-const Home = () => {
+import Card from '../partials/Card'
+const Places = () => {
     const cards = [
         {
             name:'Pimpalgaon reserviour wadad',
@@ -13,7 +12,7 @@ const Home = () => {
         },
         {
             name:'Bhamda gadh mahadev mandir , Wadad',
-            author: "PragatiGawande",
+            author: "Pragati Gawande",
             postedon : new Date().toDateString(),
             thumbnail : '/img/mahadeva.jpg',
            
@@ -21,7 +20,7 @@ const Home = () => {
         },
         {
             name:'Bhamda gadh mahadev mandir , Wadad',
-            author: "PragatiGawande",
+            author: "Pragati Gawande",
             postedon : new Date().toDateString(),
             thumbnail : '/img/mahadeva.jpg',
            
@@ -29,7 +28,7 @@ const Home = () => {
         },
         {
             name:'Bhamda gadh mahadev mandir , Wadad',
-            author: "PragatiGawande",
+            author: "Pragati Gawande",
             postedon : new Date().toDateString(),
             thumbnail : '/img/mahadeva.jpg',
            
@@ -45,18 +44,9 @@ const Home = () => {
         }
     ]
     return (
-        <div>
-           
-            
-            <main>
-                <div className='hero-content' id='places'>
-                    <h2>Welcome to <span>Spots</span> </h2>
-                    <p> Get and share beautiful locations with us </p>
-                    <a href='#places'> Go to places</a>
-                </div>
-            </main>
-            <section className='card-section'>
-                <h4 className='card-section_heading'>Most famous spots</h4>
+
+        <section className='card-section'>
+                <h4 className='card-section_heading'>All places</h4>
                 <div className='div-flex'>
 
                 {
@@ -68,8 +58,7 @@ const Home = () => {
                 }
                 </div>
             </section>
-        </div>
     )
 }
 
-export default Home
+export default Places

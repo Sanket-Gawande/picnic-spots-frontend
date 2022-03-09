@@ -1,12 +1,13 @@
 header {
   width: 100%;
-  position: relative;
+  position:fixed;
   padding: 20px;
   top: 0;
   height: 80px;
-  background: #fff;
-  box-shadow: 2px 2px 4px rbaa(0, 0, 0, 0.05);
+  background:rgba($color: #fff, $alpha: .25);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
   z-index: 2;
+  backdrop-filter: blur(20px);
   font-size: 1.2rem;
   & span {
     display: none;
@@ -41,7 +42,7 @@ header {
         & .login-button {
           background: #ccc;
           color: #555;
-          padding: 8px 20px;
+          padding: 8px 25px ;
           transition: 0.2s;
           border-radius: 5px;
         }

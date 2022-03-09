@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/auth";
 
 const Signup = () => {
-  const history = useNavigate();
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const [warning, setWarning] = useState("");
   const [data, setData] = useState({
     email: "",
     name: "",
@@ -24,20 +27,24 @@ const Signup = () => {
       headers: { "content-type": "application/json" },
     });
 
-    const { status, msg } = await res.json();
+    const { status, msg, response } = await res.json();
 
     if (status === "error") {
-      const a = document.querySelector(".responseMessege");
-      a.classList.add("visible-danger");
-      a.innerHTML = msg;
+      setWarning(msg);
     }
     if (status === "success") {
-      history.push = "/";
+      setWarning(null);
+
+      localStorage.setItem("_user_token_", res.user_token);
+      auth.login(res.user_token);
+      navigate("/", { replace: true });
     }
   }
   return (
-    <div class="form">
-      <h4 className="responseMessege"> </h4>
+    <div class="container">
+      {warning && (
+        <h4 className="responseMessege visible-danger">{warning} </h4>
+      )}
       <form onSubmit={(e) => submit(e)}>
         <h4>Create an account</h4>
         <div>
